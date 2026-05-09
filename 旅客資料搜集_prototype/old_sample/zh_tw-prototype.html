@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsiaYo 行程 旅客資料填寫</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-1: #f0fdff;
+            --primary-2: #c7f7ff;
+            --primary-6: #1e9fd2;
+            --primary-7: #0f7aab;
+            --primary-8: #055885;
+            --danger-1: #fff3eb;
+            --danger-2: #ffd8c2;
+            --danger-6: #f4511e;
+            --neutral-3: #f5f5f5;
+            --neutral-4: #e8e8e8;
+            --neutral-6: #bfbfbf;
+            --neutral-8: #595959;
+
+            --primary-color: var(--primary-6);
+            --bg-color: var(--neutral-3);
+            --white: #FFFFFF;
+            --text-main: var(--neutral-8);
+            --text-gray: var(--neutral-6);
+            --text-light: #AAAAAA;
+            --border-color: var(--neutral-4);
+            --footer-bg: #0A1C2C;
+            --footer-text: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--white);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f8ff;
+            padding: 4px 12px 4px 4px;
+            border-radius: 20px;
+            color: var(--primary-color);
+            font-weight: 400;
+        }
+
+        .user-avatar {
+            width: 28px;
+            height: 28px;
+            background-color: #A0D0F0;
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Order Info Card */
+        .order-info {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .order-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .order-details {
+            flex: 1;
+        }
+
+        .order-id {
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-bottom: 4px;
+        }
+
+        .order-name {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .order-subname {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .order-dates {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-align: center;
+        }
+
+        .date-block .month {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--primary-color);
+        }
+
+        .date-block .time {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .date-arrow {
+            color: var(--text-light);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            font-size: 12px;
+            color: var(--neutral-6);
+            margin-bottom: 24px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .form-col {
+            flex: 1;
+        }
+
+        .form-col-small {
+            flex: 0 0 160px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            color: var(--neutral-8);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            height: 40px;
+            padding: 0 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 16px;
+            color: var(--neutral-8);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-control::placeholder,
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--neutral-6) !important;
+            opacity: 1 !important;
+        }
+
+        .form-group .form-control {
+            max-width: 50%;
+        }
+
+        .form-group .date-selects .form-control {
+            max-width: 100%;
+        }
+
+        .form-group.text-light-gray .form-label,
+        .form-group.text-light-gray .form-control {
+            color: var(--neutral-6);
+        }
+
+        .section-title-lg {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(30, 159, 210, 0.5);
+        }
+
+        .form-control:disabled {
+            cursor: not-allowed;
+            opacity: 0.48;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A7A7A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px;
+        }
+
+        .passenger-dropdown {
+            background-color: #F8F9FA;
+            border-color: #E0E0E0;
+            color: var(--text-gray);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: var(--neutral-8);
+            cursor: pointer;
+        }
+
+        .radio-label input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-color);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: var(--neutral-8);
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-color);
+        }
+
+        textarea.form-control {
+            height: auto;
+            min-height: 80px;
+            padding: 12px;
+            resize: vertical;
+        }
+
+        .info-text {
+            font-size: 12px;
+            color: var(--neutral-6);
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+
+        .form-group .info-text {
+            max-width: 50%;
+        }
+
+        .info-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            padding: 0 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            outline: none;
+        }
+
+        .btn:focus-visible {
+            box-shadow: 0 0 0 2px rgba(30, 159, 210, 0.5);
+        }
+
+        .btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.48;
+        }
+
+        .btn-outline-primary {
+            background: var(--white);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-outline-primary:not(:disabled):hover {
+            background: var(--primary-1);
+        }
+
+        .btn-outline-primary:not(:disabled):active {
+            background: var(--primary-2);
+        }
+
+        .btn-text-primary {
+            background: transparent;
+            color: var(--primary-color);
+            padding: 0;
+            height: auto;
+        }
+
+        .btn-text-primary:not(:disabled):hover {
+            color: var(--primary-7);
+            text-decoration: none;
+        }
+
+        .btn-text-primary:not(:disabled):active {
+            color: var(--primary-8);
+        }
+
+        .btn-secondary {
+            background: var(--neutral-4);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:not(:disabled):hover {
+            background: var(--neutral-6);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:not(:disabled):hover {
+            background: var(--primary-7);
+        }
+
+        .btn-primary:not(:disabled):active {
+            background: var(--primary-8);
+        }
+
+        /* Passenger Header */
+        .passenger-header {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        /* Action Bar */
+        .action-bar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            padding: 16px 24px;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 40px 0 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+            font-size: 12px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: #A0B0C0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #A0B0C0;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .payment-methods img {
+            height: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            background: #A0B0C0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--footer-bg);
+        }
+
+        /* Layout Utility */
+        .mb-24 {
+            margin-bottom: 24px;
+        }
+
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+
+        .mt-16 {
+            margin-top: 16px;
+        }
+
+        /* Dropdown specific */
+        .date-selects {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            max-width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h3 class="page-title">旅客資訊與預訂需求</h3>
+
+        <!-- Order Summary Card -->
+        <div class="card order-info mb-16">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                alt="盛岡馬拉松" class="order-img">
+            <div class="order-details">
+                <div class="order-id"># T202605040003</div>
+                <div class="order-name">簡體中文測試 - 【2026岩手盛岡城市馬拉松】參賽權＋超值精選2晚住宿</div>
+                <div class="order-subname">Hotel Metropolitan Morioka NEW WING｜单人入住</div>
+            </div>
+            <div class="order-dates">
+                <div class="date-block">
+                    <div class="month">5月5日</div>
+                    <div class="time">週二 2026</div>
+                </div>
+                <div class="date-arrow">➔</div>
+                <div class="date-block">
+                    <div class="month">5月7日</div>
+                    <div class="time">週四 2026</div>
+                </div>
+                <div class="date-block">
+                    <div class="time">(3 日)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Passenger Form Card -->
+        <div class="card mb-16">
+            <h4 class="section-title">旅客資訊</h4>
+            <p class="section-desc">我們將用此資料訂房開票，若資料有誤可能會有更改費用產生，請務必填寫正確。</p>
+
+            <div class="passenger-header">旅客 1</div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <label class="form-label">中文姓</label>
+                    <input type="text" class="form-control" placeholder="請輸入中文姓">
+                </div>
+                <div class="form-col">
+                    <label class="form-label">中文名</label>
+                    <input type="text" class="form-control" placeholder="請輸入中文名">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <label class="form-label">護照英文姓</label>
+                    <input type="text" class="form-control" value="Chen">
+                </div>
+                <div class="form-col">
+                    <label class="form-label">護照英文名</label>
+                    <input type="text" class="form-control" value="Zac">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">出生年月日</label>
+                <input type="text" class="form-control" value="1985/07/17">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">護照國籍</label>
+                <input type="text" class="form-control" value="台灣">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">生理性別</label>
+                <select class="form-control">
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+            </div>
+
+            <div class="form-group text-light-gray">
+                <label class="form-label">身分證字號</label>
+                <input type="text" class="form-control" placeholder="請輸入身分證字號">
+            </div>
+
+            <div class="form-group text-light-gray">
+                <label class="form-label">護照號碼</label>
+                <input type="text" class="form-control" placeholder="請輸入護照號碼">
+            </div>
+
+            <div class="form-group text-light-gray">
+                <label class="form-label">護照出生地</label>
+                <input type="text" class="form-control" placeholder="請輸入護照出生地">
+            </div>
+
+            <div class="form-group text-light-gray">
+                <label class="form-label">護照發照日期</label>
+                <div class="date-selects">
+                    <select class="form-control">
+                        <option>年</option>
+                    </select>
+                    <select class="form-control">
+                        <option>月</option>
+                    </select>
+                    <select class="form-control">
+                        <option>日</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group text-light-gray">
+                <label class="form-label">護照效期</label>
+                <div class="date-selects">
+                    <select class="form-control">
+                        <option>年</option>
+                    </select>
+                    <select class="form-control">
+                        <option>月</option>
+                    </select>
+                    <select class="form-control">
+                        <option>日</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">参赛组别</label>
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="race"> 全程 ( Full Marathon / フルマラソン )</label>
+                    <label class="radio-label"><input type="radio" name="race"> 半馬拉松 ( Half Marathon / ハーフマラソン )</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">參賽者聯絡電話 （在海外能聯絡到您的號碼）</label>
+                <div class="info-text mb-16">若無參賽者請填「無」</div>
+                <input type="text" class="form-control" placeholder="請輸入">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">參賽者電子信箱 Email Address</label>
+                <div class="info-text mb-16">我們會將大會消息寄送到此信箱，請確保資料輸入正確。</div>
+                <input type="text" class="form-control" placeholder="請輸入">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">緊急聯絡人姓名 Emergency Contact Person Name</label>
+                <div class="info-text mb-16">緊急聯絡人請勿填寫參加人員，以免活動中延誤緊急聯絡處置<br>無參賽請填「無」</div>
+                <input type="text" class="form-control" placeholder="請輸入">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">緊急聯絡人電話 Emergency Contact Person Phone Number</label>
+                <div class="info-text mb-16">緊急聯絡人請勿填寫參加人員，以免活動中延誤緊急聯絡處置<br>無參賽請填「無」</div>
+                <input type="text" class="form-control" placeholder="請輸入">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">緊急聯絡人關係 Emergency Contact Person Relationship</label>
+                <div class="info-text mb-16">緊急聯絡人請勿填寫參加人員，以免活動中延誤緊急聯絡處置<br>無參賽請填「無」</div>
+                <input type="text" class="form-control" placeholder="請輸入">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">衣服尺寸 (T-shirt Size)</label>
+                <div class="info-text mb-16">※ 請參考各賽事官網尺寸表。</div>
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="size" checked> 無需要</label>
+                    <label class="radio-label"><input type="radio" name="size"> XS</label>
+                    <label class="radio-label"><input type="radio" name="size"> S</label>
+                    <label class="radio-label"><input type="radio" name="size"> M</label>
+                    <label class="radio-label"><input type="radio" name="size"> L</label>
+                    <label class="radio-label"><input type="radio" name="size"> XL</label>
+                    <label class="radio-label"><input type="radio" name="size"> XXL</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">飲食習慣</label>
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="diet" checked> 無參賽</label>
+                    <label class="radio-label"><input type="radio" name="diet"> 葷</label>
+                    <label class="radio-label"><input type="radio" name="diet"> 素</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">物資收件完整地址</label>
+                <div class="info-text mb-16">
+                    請填寫完整收件地址，如：106台北市大安區敦化南路二段XX號XX樓<br>
+                    一般參賽者統一採郵寄報到，收到物資即已完成報到程序，活動現場不需再進行報到，比賽日選手自行於比賽服裝備妥號碼布、晶片、水杯直接至各組起跑會場集結、寄物即可。<br>
+                    如為外籍選手，收件地址非台灣本島者，請選擇現場報到，並請於2026/10/31(六) 11:00-16:00憑身分證明文件至指定地點(<a href="#">觀音亭活動會場-台灣菸酒股份有限公司馬公營業所對面空地</a>)領取活動物資。如未於規定時間內領取者，需另外繳納500元的逾時報到費用。<br>
+                    如外籍選手請填「無」
+                </div>
+                <input type="text" class="form-control" placeholder="請輸入">
+            </div>
+
+            <div class="mt-16">
+                <button class="btn btn-text-primary">+ 新增常用旅客</button>
+            </div>
+        </div>
+
+        <!-- Lead Traveler Card -->
+        <div class="card mb-16">
+            <h3 class="section-title-lg">旅客代表人</h3>
+
+            <div class="form-group">
+                <label class="form-label">旅客代表人身份</label>
+                <select class="form-control">
+                    <option>旅客 1</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col-small">
+                    <label class="form-label">手機號碼</label>
+                    <select class="form-control">
+                        <option>+886</option>
+                    </select>
+                </div>
+                <div class="form-col">
+                    <label class="form-label">&nbsp;</label>
+                    <input type="text" class="form-control" placeholder="912 345 678">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">郵遞區號</label>
+                <input type="text" class="form-control" placeholder="請輸入郵遞區號">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">地址</label>
+                <input type="text" class="form-control" placeholder="請輸入地址">
+            </div>
+        </div>
+
+        <!-- Other Info Card -->
+        <div class="card mb-16">
+            <h3 class="section-title-lg">其他資訊</h3>
+            <p class="section-desc">更新後的自定義訂單問題簡答題</p>
+            <div class="form-group">
+                <label class="form-label">我確認上述填寫個人信息/報名資料皆正確，AsiaYo可使用您填寫內容進行賽事報名。</label>
+                <input type="text" class="form-control" placeholder="請輸入">
+            </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <button class="btn btn-secondary">返回上一頁</button>
+            <button class="btn btn-primary">預覽</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
