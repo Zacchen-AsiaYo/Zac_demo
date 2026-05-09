@@ -70,7 +70,7 @@ export function PopoverPanel({ content, link, imageSrc, className }: PopoverPane
 
 // ─── Popover with trigger ─────────────────────────────────────────────────────
 
-type Placement =
+export type Placement =
   | "bottom-right" | "bottom-center" | "bottom-left"
   | "top-right"    | "top-center"    | "top-left"
 
