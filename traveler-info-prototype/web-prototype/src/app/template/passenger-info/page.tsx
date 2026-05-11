@@ -270,10 +270,30 @@ export default function PassengerInfoPage() {
   useEffect(() => {
     const saved = localStorage.getItem("prototype-nationality")
     if (saved === "tw" || saved === "cn" || saved === "sg") setNationality(saved)
+    const m = document.cookie.match(/(?:^|;)\s*asiayo_logged_in=([^;]+)/)
+    setIsLoggedIn(m ? decodeURIComponent(m[1]) === "true" : false)
   }, [])
   const handleNationalityChange = (n: Nationality) => {
     setNationality(n)
     localStorage.setItem("prototype-nationality", n)
+  }
+  const writeCookie = (name: string, value: string) => {
+    const d = new Date(); d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000)
+    document.cookie = `${name}=${encodeURIComponent(value)};expires=${d.toUTCString()};path=/`
+  }
+  const expireCookie = (name: string) => {
+    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`
+  }
+  const handleLogin = () => {
+    writeCookie("asiayo_logged_in", "true")
+    writeCookie("asiayo_member_country", "TW")
+    setIsLoggedIn(true)
+  }
+  const handleLogout = () => {
+    expireCookie("asiayo_logged_in")
+    expireCookie("asiayo_member_country")
+    expireCookie("asiayo_currency")
+    setIsLoggedIn(false)
   }
   const isTw = nationality === "tw"
 
@@ -320,7 +340,7 @@ export default function PassengerInfoPage() {
             {isLoggedIn ? (
               <button
                 type="button"
-                onClick={() => setIsLoggedIn(false)}
+                onClick={handleLogout}
                 className="flex items-center gap-2 hover:opacity-80"
                 aria-label="使用者選單"
               >
@@ -334,12 +354,12 @@ export default function PassengerInfoPage() {
               <>
                 <a
                   href="#"
-                  onClick={(e) => { e.preventDefault(); setIsLoggedIn(true) }}
+                  onClick={(e) => { e.preventDefault(); handleLogin() }}
                   className="hover:text-primary-6"
                 >登入</a>
                 <a
                   href="#"
-                  onClick={(e) => { e.preventDefault(); setIsLoggedIn(true) }}
+                  onClick={(e) => { e.preventDefault(); handleLogin() }}
                   className="hover:text-primary-6"
                 >註冊</a>
               </>

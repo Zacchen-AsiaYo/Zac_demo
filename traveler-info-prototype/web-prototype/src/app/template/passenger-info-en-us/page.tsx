@@ -267,10 +267,30 @@ export default function PassengerInfoEnUsPage() {
   useEffect(() => {
     const saved = localStorage.getItem("prototype-nationality")
     if (saved === "tw" || saved === "cn" || saved === "sg") setNationality(saved)
+    const m = document.cookie.match(/(?:^|;)\s*asiayo_logged_in=([^;]+)/)
+    setIsLoggedIn(m ? decodeURIComponent(m[1]) === "true" : false)
   }, [])
   const handleNationalityChange = (n: Nationality) => {
     setNationality(n)
     localStorage.setItem("prototype-nationality", n)
+  }
+  const writeCookie = (name: string, value: string) => {
+    const d = new Date(); d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000)
+    document.cookie = `${name}=${encodeURIComponent(value)};expires=${d.toUTCString()};path=/`
+  }
+  const expireCookie = (name: string) => {
+    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`
+  }
+  const handleLogin = () => {
+    writeCookie("asiayo_logged_in", "true")
+    writeCookie("asiayo_member_country", "TW")
+    setIsLoggedIn(true)
+  }
+  const handleLogout = () => {
+    expireCookie("asiayo_logged_in")
+    expireCookie("asiayo_member_country")
+    expireCookie("asiayo_currency")
+    setIsLoggedIn(false)
   }
   const isTw = nationality === "tw"
 
@@ -315,7 +335,7 @@ export default function PassengerInfoEnUsPage() {
             {isLoggedIn ? (
               <button
                 type="button"
-                onClick={() => setIsLoggedIn(false)}
+                onClick={handleLogout}
                 className="flex items-center gap-2 hover:opacity-80"
                 aria-label="User menu"
               >
@@ -329,12 +349,12 @@ export default function PassengerInfoEnUsPage() {
               <>
                 <a
                   href="#"
-                  onClick={(e) => { e.preventDefault(); setIsLoggedIn(true) }}
+                  onClick={(e) => { e.preventDefault(); handleLogin() }}
                   className="hover:text-primary-6"
                 >Sign In</a>
                 <a
                   href="#"
-                  onClick={(e) => { e.preventDefault(); setIsLoggedIn(true) }}
+                  onClick={(e) => { e.preventDefault(); handleLogin() }}
                   className="hover:text-primary-6"
                 >Sign Up</a>
               </>
@@ -620,46 +640,51 @@ export default function PassengerInfoEnUsPage() {
       <footer className="bg-[#002138] text-white">
         <div className="mx-auto grid max-w-[1200px] grid-cols-4 gap-8 px-6 py-12">
           <div>
-            <h4 className="mb-4 text-base font-bold">About Us</h4>
+            <h4 className="mb-4 text-base font-bold">About</h4>
             <ul className="space-y-2.5 text-sm text-white/80">
-              <li><a href="#" className="hover:opacity-80">List Property</a></li>
+              <li><a href="#" className="hover:opacity-80">List your property</a></li>
               <li><a href="#" className="hover:opacity-80">Careers</a></li>
-              <li><a href="#" className="hover:opacity-80">Partnerships</a></li>
               <li><a href="#" className="hover:opacity-80">About AsiaYo</a></li>
               <li><a href="#" className="hover:opacity-80">FAQ</a></li>
-              <li><a href="#" className="hover:opacity-80">Contact Us</a></li>
+              <li><a href="#" className="hover:opacity-80">Contact us</a></li>
             </ul>
           </div>
           <div>
             <h4 className="mb-4 text-base font-bold">Customer Service</h4>
             <ul className="space-y-2.5 text-sm text-white/80">
-              <li>Mon–Fri 09:00–22:00 (UTC+8)</li>
-              <li>Sat/Sun &amp; Holidays 12:00–18:00 (UTC+8)</li>
-              <li>Tel: +886-2-7755-0575</li>
+              <li>Mon – Fri 09:00 – 22:00 (UTC+8)</li>
+              <li>Sat / Sun &amp; Holidays 12:00 – 18:00 (UTC+8)</li>
+              <li>Phone: +886-2-7755-0575</li>
               <li>Fax: +886-2-2784-5272</li>
-              <li>Email: customer_us@asiayo.com</li>
+              <li>Email: customer@asiayo.com</li>
             </ul>
           </div>
           <div>
             <h4 className="mb-4 text-base font-bold">AsiaYo</h4>
             <p className="text-sm leading-relaxed text-white/80">
-              AsiaYo offers a curated selection of cruise tours, group tours, day trips, and transportation tickets. We provide premium and unique accommodation options, including high-speed rail packages, camping, and private villas. We also feature special sports events like marathons, hiking, and golf, along with comprehensive travel guides for top destinations worldwide. With authentic user reviews and a seamless one-stop booking experience, we help you find your ideal travel choice with ease!
+              AsiaYo curates global cruises, group tours, transport passes, unique stays (HSR packages, glamping, whole-house rentals), and signature sports events like marathons, hiking, and golf—all in one platform.
             </p>
           </div>
           <div>
             <h4 className="mb-4 text-base font-bold">Download App</h4>
             <div className="mb-6 flex gap-2">
-              <a href="#" className="inline-flex h-10 items-center gap-2 rounded border border-white/20 px-3 text-xs hover:opacity-80">
-                App Store
+              <a href="#" className="hover:opacity-80">
+                <img src="https://img.asiayo.com/static/images/appStore_footer_banner@2x.webp" alt="App Store" className="h-10" />
               </a>
-              <a href="#" className="inline-flex h-10 items-center gap-2 rounded border border-white/20 px-3 text-xs hover:opacity-80">
-                Google Play
+              <a href="#" className="hover:opacity-80">
+                <img src="https://img.asiayo.com/static/images/googlePlay_footer_banner@2x.webp" alt="Google Play" className="h-10" />
               </a>
             </div>
-            <h4 className="mb-4 text-base font-bold">Social Media</h4>
+            <h4 className="mb-4 text-base font-bold">Follow Us</h4>
             <div className="flex gap-3">
+              <a href="#" className="inline-flex size-9 items-center justify-center rounded-full border border-white/30 text-white/80 hover:opacity-80" aria-label="WordPress">
+                <img src="https://img.asiayo.com/static/images/footer/logo/wordpress.png" alt="WordPress" className="size-4" />
+              </a>
               <a href="#" className="inline-flex size-9 items-center justify-center rounded-full border border-white/30 text-white/80 hover:opacity-80" aria-label="Facebook">
-                <Icon name="facebook" type="solid" size={16} />
+                <img src="https://img.asiayo.com/static/images/footer/logo/facebook.png" alt="Facebook" className="size-4" />
+              </a>
+              <a href="#" className="inline-flex size-9 items-center justify-center rounded-full border border-white/30 text-white/80 hover:opacity-80" aria-label="Instagram">
+                <img src="https://img.asiayo.com/static/images/footer/logo/instagram.png" alt="Instagram" className="size-4" />
               </a>
             </div>
           </div>
@@ -669,7 +694,23 @@ export default function PassengerInfoEnUsPage() {
             <div className="flex flex-wrap items-center gap-4">
               <a href="#" className="hover:opacity-80">Terms of Service</a>
               <a href="#" className="hover:opacity-80">Privacy Policy</a>
-              <span>© 2014-2026 AsiaYo Co., Ltd. All Rights Reserved.</span>
+              <span>© 2014-2026 AsiaYo Co., Ltd. All Rights Reserved. Version 3.97.0</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <img src="https://img.asiayo.com/static/images/footer/logo/applepay.svg" alt="Apple Pay" className="h-5" />
+                <img src="https://img.asiayo.com/static/images/footer/logo/visa.svg" alt="Visa" className="h-5" />
+                <img src="https://img.asiayo.com/static/images/footer/logo/master.svg" alt="Mastercard" className="h-5" />
+                <img src="https://img.asiayo.com/static/images/footer/logo/jcb.svg" alt="JCB" className="h-5" />
+                <img src="https://img.asiayo.com/static/images/footer/logo/linepay.svg" alt="LINE Pay" className="h-5" />
+                <img src="https://img.asiayo.com/static/images/footer/logo/jkopay.svg" alt="JKOPay" className="h-5" />
+              </div>
+              <div className="mx-2 h-4 w-px bg-white/20" />
+              <div className="flex items-center gap-2">
+                <img src="https://img.asiayo.com/static/images/footer/logo/motc.svg" alt="MOTC" className="h-5" />
+                <img src="https://img.asiayo.com/static/images/footer/logo/tata.svg" alt="TATA" className="h-5" />
+                <img src="https://img.asiayo.com/static/images/footer/logo/tqaa.svg" alt="TQAA" className="h-5" />
+              </div>
             </div>
           </div>
         </div>
