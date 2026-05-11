@@ -332,8 +332,6 @@ export default function PassengerInfoPage() {
                     <a href="#" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">繁體中文(香港)</a>
                     <a href="/template/passenger-info-zh-cn" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">简体中文</a>
                     <a href="/template/passenger-info-en-us" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">English</a>
-                    <a href="#" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">한국어</a>
-                    <a href="#" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">日本語</a>
                   </div>
                 </>
               )}
