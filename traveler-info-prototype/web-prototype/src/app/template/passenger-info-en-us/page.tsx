@@ -643,7 +643,7 @@ export default function PassengerInfoEnUsPage() {
           <div>
             <h4 className="mb-4 text-base font-bold">AsiaYo</h4>
             <p className="text-sm leading-relaxed text-white/80">
-              AsiaYo is available for varied lodging such as stylish BnB and cozy hotels. With our techs for recommending listing, customer service, and localization, making your every journey with memorable experiences.
+              AsiaYo offers a curated selection of cruise tours, group tours, day trips, and transportation tickets. We provide premium and unique accommodation options, including high-speed rail packages, camping, and private villas. We also feature special sports events like marathons, hiking, and golf, along with comprehensive travel guides for top destinations worldwide. With authentic user reviews and a seamless one-stop booking experience, we help you find your ideal travel choice with ease!
             </p>
           </div>
           <div>

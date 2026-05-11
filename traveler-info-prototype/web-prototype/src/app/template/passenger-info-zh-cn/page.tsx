@@ -483,8 +483,8 @@ export default function PassengerInfoZhCnPage() {
             <div className="mb-5">
               <Label className={tone8}>参赛组别</Label>
               <RadioGroup value={raceGroup} onValueChange={setRaceGroup} className="flex flex-col gap-3">
-                <RadioButton value="full" label="全程 ( Full Marathon / フルマラソン )" />
-                <RadioButton value="half" label="半马拉松 ( Half Marathon / ハーフマラソン )" />
+                <RadioButton value="full" label="全程马拉松 ( Full Marathon / フルマラソン )" />
+                <RadioButton value="half" label="半程马拉松 ( Half Marathon / ハーフマラソン )" />
               </RadioGroup>
             </div>
 
@@ -644,14 +644,9 @@ export default function PassengerInfoZhCnPage() {
           </div>
           <div>
             <h4 className="mb-4 text-base font-bold">AsiaYo</h4>
-            <ul className="space-y-2.5 text-sm text-white/80">
-              <li>亚揪游旅行社股份有限公司</li>
-              <li>台北市大安区敦化南路二段77号18楼之三</li>
-              <li>代表人：郑兆刚</li>
-              <li>统一编号：82883867</li>
-              <li>交观甲830400号</li>
-              <li>品保协会 北2478</li>
-            </ul>
+            <p className="text-sm leading-relaxed text-white/80">
+              AsiaYo 严选邮轮旅游、跟团行程、一日游和交通票券，提供最优质独特的高铁、露营、包栋等饭店住宿选择，还有马拉松、登山、高尔夫等特色运动赛事，集结日韩、台湾、东南亚、欧美、纽澳等全球旅游攻略！真实的用户评价与体验，让你线上一站快速预订，轻松找到最理想的旅游选择！
+            </p>
           </div>
           <div>
             <h4 className="mb-4 text-base font-bold">下载 App</h4>
