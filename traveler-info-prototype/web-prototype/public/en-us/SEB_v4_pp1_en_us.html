@@ -8817,8 +8817,16 @@
       const [mainTab, setMainTab] = useState(() => window.SEB_MAIN_TABS?.[0]?.key || 'hot');
       const [activeSection, setActiveSection] = useState(null);
       const [notified, setNotified] = useState(new Set());
-      // Currency state — USD or RMB
-      const [currency, setCurrency] = useState('USD');
+      // Currency state — TWD / USD / RMB. Init from cookie so a
+      // locale-detect.js reload (after dropdown click) restores the choice.
+      const [currency, setCurrency] = useState(() => {
+        try {
+          const m = document.cookie.match(/(?:^|;)\s*asiayo_currency=([^;]+)/);
+          const v = m ? decodeURIComponent(m[1]).toUpperCase() : null;
+          if (v === 'TWD' || v === 'USD' || v === 'RMB') return v;
+        } catch (e) {}
+        return 'USD';
+      });
       window.__sebCurrency = currency;
       window.__sebSetCurrency = setCurrency;
       // Suppress scrollspy briefly after a click so it doesn't fight the
