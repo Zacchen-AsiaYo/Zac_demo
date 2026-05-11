@@ -7773,7 +7773,7 @@
               { key: 'RMB', label: 'RMB' },
               { key: 'SGD', label: 'SGD' },
             ];
-            const supported = ['USD', 'RMB'];
+            const supported = ['TWD', 'USD', 'RMB'];
             return (
               <div className="dropdown seb-hide-mobile" data-dropdown="currency" data-open="false">
                 <span className="dropdown__trigger" aria-expanded="false" style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: '#262626', fontSize: 14, cursor: 'pointer' }}>
@@ -8807,6 +8807,7 @@
 
     // ── Currency conversion config ──
     window.__sebCurrencyConfig = {
+      TWD: { symbol: 'NT$', divisor: 1 },
       USD: { symbol: 'USD$', divisor: 30 },
       RMB: { symbol: '¥', divisor: 5 },
     };
