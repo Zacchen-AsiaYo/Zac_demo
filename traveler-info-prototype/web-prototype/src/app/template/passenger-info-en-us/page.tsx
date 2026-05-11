@@ -308,8 +308,6 @@ export default function PassengerInfoEnUsPage() {
                     <a href="#" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">繁體中文(香港)</a>
                     <a href="/template/passenger-info-zh-cn" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">简体中文</a>
                     <a href="/template/passenger-info-en-us" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">English</a>
-                    <a href="#" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">한국어</a>
-                    <a href="#" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">日本語</a>
                   </div>
                 </>
               )}
@@ -639,19 +637,14 @@ export default function PassengerInfoEnUsPage() {
               <li>Sat/Sun &amp; Holidays 12:00–18:00 (UTC+8)</li>
               <li>Tel: +886-2-7755-0575</li>
               <li>Fax: +886-2-2784-5272</li>
-              <li>Email: customer_tw@asiayo.com</li>
+              <li>Email: customer_us@asiayo.com</li>
             </ul>
           </div>
           <div>
             <h4 className="mb-4 text-base font-bold">AsiaYo</h4>
-            <ul className="space-y-2.5 text-sm text-white/80">
-              <li>AsiaYo Travel Co., Ltd.</li>
-              <li>18F-3, No. 77, Sec. 2, Dunhua S. Rd., Da&apos;an Dist., Taipei City</li>
-              <li>Representative: Cheng Chao-Kang</li>
-              <li>VAT No.: 82883867</li>
-              <li>Travel License: 830400</li>
-              <li>TQAA: 北2478</li>
-            </ul>
+            <p className="text-sm leading-relaxed text-white/80">
+              AsiaYo is available for varied lodging such as stylish BnB and cozy hotels. With our techs for recommending listing, customer service, and localization, making your every journey with memorable experiences.
+            </p>
           </div>
           <div>
             <h4 className="mb-4 text-base font-bold">Download App</h4>
@@ -665,17 +658,8 @@ export default function PassengerInfoEnUsPage() {
             </div>
             <h4 className="mb-4 text-base font-bold">Social Media</h4>
             <div className="flex gap-3">
-              <a href="#" className="inline-flex size-9 items-center justify-center rounded-full border border-white/30 text-white/80 hover:opacity-80" aria-label="Blog">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-              </a>
               <a href="#" className="inline-flex size-9 items-center justify-center rounded-full border border-white/30 text-white/80 hover:opacity-80" aria-label="Facebook">
                 <Icon name="facebook" type="solid" size={16} />
-              </a>
-              <a href="#" className="inline-flex size-9 items-center justify-center rounded-full border border-white/30 text-white/80 hover:opacity-80" aria-label="Instagram">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-              </a>
-              <a href="#" className="inline-flex size-9 items-center justify-center rounded-full border border-white/30 text-white/80 hover:opacity-80" aria-label="Line">
-                <span className="text-xs font-bold">LINE</span>
               </a>
             </div>
           </div>
