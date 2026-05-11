@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Script from "next/script"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
@@ -297,6 +298,7 @@ export default function PassengerInfoZhCnPage() {
 
   return (
     <div className="min-h-screen bg-neutral-3 font-[family-name:var(--font-noto-sans-tc)] flex flex-col">
+      <Script src="/locale-detect.js" strategy="afterInteractive" />
       {/* ── Site Header ─────────────────────────────────────────── */}
       <header className="border-b border-neutral-4 bg-white">
         <div className="mx-auto flex h-20 max-w-[1200px] items-center justify-between px-6">

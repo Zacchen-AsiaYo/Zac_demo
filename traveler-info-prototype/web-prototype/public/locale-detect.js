@@ -50,8 +50,33 @@
     try { localStorage.setItem(name, value); } catch (e) { /* ignore */ }
   }
 
+  // Determine which page-type the user is on and extract the embedded locale.
+  // Returns null if the current path doesn't match a known prototype route.
+  function detectPageContext() {
+    const p = location.pathname;
+    // SEB v4 page: /{locale}/SEB_v4_*.html
+    const seb = p.match(/^\/(zh-tw|zh-cn|en-us)\/SEB_v4_/i);
+    if (seb) return { type: 'seb', locale: seb[1].toLowerCase() };
+    // Static index page: /{locale}/ or /{locale}/index.html
+    const idx = p.match(/^\/(zh-tw|zh-cn|en-us)(?:\/|\/index\.html)?$/);
+    if (idx) return { type: 'index', locale: idx[1].toLowerCase() };
+    // Passenger-info React page: /template/passenger-info[-zh-cn|-en-us]
+    const pax = p.match(/^\/template\/passenger-info(-zh-cn|-en-us)?\/?$/);
+    if (pax) {
+      const suffix = pax[1] || '';
+      const locale = suffix === '-zh-cn' ? 'zh-cn' : suffix === '-en-us' ? 'en-us' : 'zh-tw';
+      return { type: 'passenger', locale: locale };
+    }
+    return null;
+  }
+
+  const pageContext = detectPageContext();
+
   function detectLocale() {
-    // P1: URL path
+    // P1: URL path — covers /{locale}/, /{locale}/SEB_v4_*, /template/passenger-info[-*]
+    if (pageContext) {
+      return { source: 'P1 URL path', value: pageContext.locale };
+    }
     const pathMatch = location.pathname.match(/\/([a-z]{2}-[a-z]{2})(?:\/|$)/);
     if (pathMatch && SUPPORTED_LOCALES.indexOf(pathMatch[1]) !== -1) {
       return { source: 'P1 URL path', value: pathMatch[1] };
@@ -108,7 +133,7 @@
 
   // Demo badge — shows detection result on every page
   function renderBadge() {
-    const pathLocale = (location.pathname.match(/\/([a-z]{2}-[a-z]{2})(?:\/|$)/) || [])[1];
+    const pathLocale = pageContext ? pageContext.locale : (location.pathname.match(/\/([a-z]{2}-[a-z]{2})(?:\/|$)/) || [])[1];
     const wouldRedirect = pathLocale && pathLocale !== localeResult.value && localeResult.source !== 'P1 URL path';
     const badge = document.createElement('div');
     badge.id = 'asiayo-locale-debug';
@@ -126,11 +151,26 @@
       (wouldRedirect ? '<div style="margin-top:6px;color:#ffb74a">⚠ Would redirect to /' + localeResult.value + '/</div>' : '') +
       '<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">' +
       (function () {
-        var localeLinks = {
-          'zh-tw': '../zh-tw/SEB_v4_PP1_zh_tw.html',
-          'zh-cn': '../zh-cn/SEB_v4_PP1_zh_cn.html',
-          'en-us': '../en-us/SEB_v4_pp1_en_us.html'
+        // Lang-switch destinations adapt to current page type so users stay
+        // within the same prototype (index / SEB / passenger-info).
+        var SEB_LINKS = {
+          'zh-tw': '/zh-tw/SEB_v4_PP1_zh_tw.html',
+          'zh-cn': '/zh-cn/SEB_v4_PP1_zh_cn.html',
+          'en-us': '/en-us/SEB_v4_pp1_en_us.html'
         };
+        var PAX_LINKS = {
+          'zh-tw': '/template/passenger-info',
+          'zh-cn': '/template/passenger-info-zh-cn',
+          'en-us': '/template/passenger-info-en-us'
+        };
+        var INDEX_LINKS = {
+          'zh-tw': '/zh-tw/',
+          'zh-cn': '/zh-cn/',
+          'en-us': '/en-us/'
+        };
+        var localeLinks = pageContext && pageContext.type === 'seb' ? SEB_LINKS
+                        : pageContext && pageContext.type === 'passenger' ? PAX_LINKS
+                        : INDEX_LINKS;
         return ['zh-tw', 'zh-cn', 'en-us'].map(function (l) {
           const active = pathLocale === l;
           return '<a href="' + localeLinks[l] + '" style="background:' + (active ? '#1e9fd2' : 'rgba(255,255,255,.15)') +
