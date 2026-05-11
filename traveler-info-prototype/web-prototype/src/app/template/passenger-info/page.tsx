@@ -265,6 +265,7 @@ export default function PassengerInfoPage() {
   const [shirtSize, setShirtSize] = useState("none")
   const [dietHabit, setDietHabit] = useState("none")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
   const [nationality, setNationality] = useState<Nationality>("tw")
   useEffect(() => {
@@ -338,18 +339,36 @@ export default function PassengerInfoPage() {
               )}
             </div>
             {isLoggedIn ? (
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="flex items-center gap-2 hover:opacity-80"
-                aria-label="使用者選單"
-              >
-                <span className="inline-flex size-9 items-center justify-center rounded-full bg-primary-4 text-base font-medium text-white">Z</span>
-                <span className="text-base text-neutral-9">Zac</span>
-                <span className="text-neutral-7">
-                  <Icon name="chevron-down" type="line" size={12} />
-                </span>
-              </button>
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setUserMenuOpen((v) => !v)}
+                  className="flex items-center gap-2 hover:opacity-80"
+                  aria-label="使用者選單"
+                  aria-expanded={userMenuOpen}
+                >
+                  <span className="inline-flex size-9 items-center justify-center rounded-full bg-primary-4 text-base font-medium text-white">Z</span>
+                  <span className="text-base text-neutral-9">Zac</span>
+                  <span className="text-neutral-7">
+                    <Icon name={userMenuOpen ? "chevron-up" : "chevron-down"} type="line" size={12} />
+                  </span>
+                </button>
+                {userMenuOpen && (
+                  <>
+                    <div className="fixed inset-0 z-10" onClick={() => setUserMenuOpen(false)} aria-hidden />
+                    <div className="absolute right-0 top-[calc(100%+8px)] z-20 w-64 overflow-hidden rounded-lg border border-neutral-4 bg-white py-2 shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
+                      <a href="/template/passenger-info" className="block whitespace-nowrap px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">前往 旅客資料搜集 prototype</a>
+                      <a href="/zh-tw/SEB_v4_PP1_zh_tw.html" className="block whitespace-nowrap px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">前往 SEB v4 PP1.0 prototype</a>
+                      <div className="my-1 h-px bg-neutral-4" />
+                      <button
+                        type="button"
+                        onClick={() => { setUserMenuOpen(false); handleLogout() }}
+                        className="block w-full whitespace-nowrap px-4 py-2.5 text-left text-base text-danger-6 hover:bg-neutral-3"
+                      >模擬登出</button>
+                    </div>
+                  </>
+                )}
+              </div>
             ) : (
               <>
                 <a

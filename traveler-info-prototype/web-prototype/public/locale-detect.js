@@ -263,13 +263,27 @@
     }
   }
 
+  // Map current detected locale → prototype routes
+  var PROTOTYPE_ROUTES = {
+    'zh-tw': { passenger: '/template/passenger-info',       seb: '/zh-tw/SEB_v4_PP1_zh_tw.html' },
+    'zh-cn': { passenger: '/template/passenger-info-zh-cn', seb: '/zh-cn/SEB_v4_PP1_zh_cn.html' },
+    'zh-hk': { passenger: '/template/passenger-info',       seb: '/zh-tw/SEB_v4_PP1_zh_tw.html' },
+    'zh-my': { passenger: '/template/passenger-info-zh-cn', seb: '/zh-cn/SEB_v4_PP1_zh_cn.html' },
+    'en-us': { passenger: '/template/passenger-info-en-us', seb: '/en-us/SEB_v4_pp1_en_us.html' },
+    'ja-jp': { passenger: '/template/passenger-info-en-us', seb: '/en-us/SEB_v4_pp1_en_us.html' },
+    'ko-kr': { passenger: '/template/passenger-info-en-us', seb: '/en-us/SEB_v4_pp1_en_us.html' }
+  };
+
+  function getRoutes() {
+    return PROTOTYPE_ROUTES[localeResult.value] || PROTOTYPE_ROUTES['zh-tw'];
+  }
+
   function buildAvatar() {
     var wrap = document.createElement('div');
     wrap.className = 'asiayo-user-menu';
     wrap.setAttribute('data-prototype-user-menu', '');
-    wrap.title = '點此登出 (Prototype)';
     wrap.style.cssText = [
-      'display:inline-flex', 'align-items:center', 'gap:6px',
+      'position:relative', 'display:inline-flex', 'align-items:center', 'gap:6px',
       'cursor:pointer', 'padding:4px 8px', 'user-select:none',
       'font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif'
     ].join(';');
@@ -277,12 +291,70 @@
       '<span style="width:28px;height:28px;border-radius:50%;background:#1e9fd2;color:#fff;' +
       'display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:600">Z</span>' +
       '<span style="color:#262626;font-size:14px">Zac</span>' +
-      '<span style="font-size:10px;color:#595959">▼</span>';
-    wrap.addEventListener('click', function () {
-      if (!confirm('登出 Prototype 帳號？')) return;
+      '<span class="asiayo-user-menu__caret" style="font-size:10px;color:#595959;transition:transform .15s">▼</span>';
+
+    var routes = getRoutes();
+    var panel = document.createElement('div');
+    panel.className = 'asiayo-user-menu__panel';
+    panel.setAttribute('hidden', '');
+    panel.style.cssText = [
+      'position:absolute', 'top:calc(100% + 6px)', 'right:0', 'z-index:9998',
+      'min-width:240px', 'background:#fff', 'border:1px solid #e8e8e8',
+      'border-radius:8px', 'box-shadow:0 4px 16px rgba(0,0,0,.08)',
+      'padding:6px 0', 'font-size:14px', 'color:#262626'
+    ].join(';');
+    var itemStyle = 'display:block;width:100%;padding:10px 16px;background:none;border:0;text-align:left;cursor:pointer;color:inherit;font:inherit;white-space:nowrap';
+    panel.innerHTML =
+      '<button type="button" data-action="passenger" style="' + itemStyle + '">前往 旅客資料搜集 prototype</button>' +
+      '<button type="button" data-action="seb"       style="' + itemStyle + '">前往 SEB v4 PP1.0 prototype</button>' +
+      '<div style="height:1px;background:#e8e8e8;margin:6px 0"></div>' +
+      '<button type="button" data-action="logout"    style="' + itemStyle + 'color:#f4511e">模擬登出</button>';
+    wrap.appendChild(panel);
+
+    // Hover highlight for items
+    panel.querySelectorAll('button[data-action]').forEach(function (btn) {
+      btn.addEventListener('mouseenter', function () { btn.style.background = '#fafafa'; });
+      btn.addEventListener('mouseleave', function () { btn.style.background = 'none'; });
+    });
+
+    function closePanel() {
+      panel.setAttribute('hidden', '');
+      var caret = wrap.querySelector('.asiayo-user-menu__caret');
+      if (caret) caret.style.transform = '';
+      document.removeEventListener('click', onDocClick);
+    }
+    function openPanel() {
+      panel.removeAttribute('hidden');
+      var caret = wrap.querySelector('.asiayo-user-menu__caret');
+      if (caret) caret.style.transform = 'rotate(180deg)';
+      // Defer so this same click doesn't trigger immediate close
+      setTimeout(function () { document.addEventListener('click', onDocClick); }, 0);
+    }
+    function onDocClick(e) {
+      if (!wrap.contains(e.target)) closePanel();
+    }
+
+    wrap.addEventListener('click', function (e) {
+      // Ignore clicks inside the panel buttons (they have their own handlers)
+      if (panel.contains(e.target)) return;
+      e.stopPropagation();
+      if (panel.hasAttribute('hidden')) openPanel(); else closePanel();
+    });
+
+    panel.querySelector('[data-action="passenger"]').addEventListener('click', function (e) {
+      e.stopPropagation();
+      window.location.href = routes.passenger;
+    });
+    panel.querySelector('[data-action="seb"]').addEventListener('click', function (e) {
+      e.stopPropagation();
+      window.location.href = routes.seb;
+    });
+    panel.querySelector('[data-action="logout"]').addEventListener('click', function (e) {
+      e.stopPropagation();
       setLoggedIn(false);
       location.reload();
     });
+
     return wrap;
   }
 
