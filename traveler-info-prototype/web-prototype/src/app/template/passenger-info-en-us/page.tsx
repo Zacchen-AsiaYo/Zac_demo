@@ -522,8 +522,8 @@ export default function PassengerInfoEnUsPage() {
             <div className="mb-5">
               <Label className={tone8}>Race Category</Label>
               <RadioGroup value={raceGroup} onValueChange={setRaceGroup} className="flex flex-col gap-3">
-                <RadioButton value="full" label="Full Marathon" />
-                <RadioButton value="half" label="Half Marathon" />
+                <RadioButton value="full" label="Full Marathon / フルマラソン" />
+                <RadioButton value="half" label="Half Marathon / ハーフマラソン" />
               </RadioGroup>
             </div>
 
