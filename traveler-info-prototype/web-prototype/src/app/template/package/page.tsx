@@ -141,7 +141,8 @@ function SiteHeader() {
             TWD
             <Icon name="chevron-down" type="line" size={16} />
           </button>
-          <button className="flex items-center gap-1 hover:text-primary-6 transition-colors bg-transparent border-none cursor-pointer">
+          <button className="flex items-center gap-1.5 hover:text-primary-6 transition-colors bg-transparent border-none cursor-pointer">
+            <span className="text-lg leading-none">🇹🇼</span>
             繁體中文（台灣）
             <Icon name="chevron-down" type="line" size={16} />
           </button>

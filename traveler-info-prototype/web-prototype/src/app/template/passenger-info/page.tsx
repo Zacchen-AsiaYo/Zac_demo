@@ -321,8 +321,9 @@ export default function PassengerInfoPage() {
               <button
                 type="button"
                 onClick={() => setLangOpen((v) => !v)}
-                className="flex items-center gap-1 hover:text-primary-6"
+                className="flex items-center gap-1.5 hover:text-primary-6"
               >
+                <span className="text-lg leading-none">🇹🇼</span>
                 繁體中文(台灣)
                 <Icon name={langOpen ? "chevron-up" : "chevron-down"} type="line" size={12} />
               </button>
@@ -330,10 +331,10 @@ export default function PassengerInfoPage() {
                 <>
                   <div className="fixed inset-0 z-10" onClick={() => setLangOpen(false)} aria-hidden />
                   <div className="absolute right-0 top-[calc(100%+8px)] z-20 w-48 overflow-hidden rounded-lg border border-neutral-4 bg-white py-2 shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
-                    <a href="/template/passenger-info" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">繁體中文(台灣)</a>
-                    <a href="#" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">繁體中文(香港)</a>
-                    <a href="/template/passenger-info-zh-cn" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">简体中文</a>
-                    <a href="/template/passenger-info-en-us" className="block px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3">English</a>
+                    <a href="/template/passenger-info" className="flex items-center gap-2 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><span className="text-lg leading-none">🇹🇼</span>繁體中文(台灣)</a>
+                    <a href="#" className="flex items-center gap-2 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><span className="text-lg leading-none">🇭🇰</span>繁體中文(香港)</a>
+                    <a href="/template/passenger-info-zh-cn" className="flex items-center gap-2 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><span className="text-lg leading-none">🇨🇳</span>简体中文</a>
+                    <a href="/template/passenger-info-en-us" className="flex items-center gap-2 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><span className="text-lg leading-none">🇺🇸</span>English</a>
                   </div>
                 </>
               )}
