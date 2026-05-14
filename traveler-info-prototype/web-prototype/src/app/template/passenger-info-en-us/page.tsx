@@ -320,8 +320,7 @@ export default function PassengerInfoEnUsPage() {
                 onClick={() => setLangOpen((v) => !v)}
                 className="flex items-center gap-1.5 hover:text-primary-6"
               >
-                <img src="https://hatscripts.github.io/circle-flags/flags/us.svg" alt="" width={24} height={24} className="size-6 shrink-0 rounded-full" />
-                English
+                <img src="https://hatscripts.github.io/circle-flags/flags/us.svg" alt="English" width={24} height={24} className="size-6 shrink-0 rounded-full" />
                 <Icon name={langOpen ? "chevron-up" : "chevron-down"} type="line" size={12} />
               </button>
               {langOpen && (

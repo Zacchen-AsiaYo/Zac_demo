@@ -142,8 +142,7 @@ function SiteHeader() {
             <Icon name="chevron-down" type="line" size={16} />
           </button>
           <button className="flex items-center gap-1.5 hover:text-primary-6 transition-colors bg-transparent border-none cursor-pointer">
-            <img src="https://hatscripts.github.io/circle-flags/flags/tw.svg" alt="" width={24} height={24} className="size-6 shrink-0 rounded-full" />
-            繁體中文（台灣）
+            <img src="https://hatscripts.github.io/circle-flags/flags/tw.svg" alt="繁體中文（台灣）" width={24} height={24} className="size-6 shrink-0 rounded-full" />
             <Icon name="chevron-down" type="line" size={16} />
           </button>
         </div>

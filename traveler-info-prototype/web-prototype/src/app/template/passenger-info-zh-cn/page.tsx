@@ -320,8 +320,7 @@ export default function PassengerInfoZhCnPage() {
                 onClick={() => setLangOpen((v) => !v)}
                 className="flex items-center gap-1.5 hover:text-primary-6"
               >
-                <img src="https://hatscripts.github.io/circle-flags/flags/cn.svg" alt="" width={24} height={24} className="size-6 shrink-0 rounded-full" />
-                简体中文
+                <img src="https://hatscripts.github.io/circle-flags/flags/cn.svg" alt="简体中文" width={24} height={24} className="size-6 shrink-0 rounded-full" />
                 <Icon name={langOpen ? "chevron-up" : "chevron-down"} type="line" size={12} />
               </button>
               {langOpen && (
