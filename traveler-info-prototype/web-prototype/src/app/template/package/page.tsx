@@ -142,7 +142,7 @@ function SiteHeader() {
             <Icon name="chevron-down" type="line" size={16} />
           </button>
           <button className="flex items-center gap-1.5 hover:text-primary-6 transition-colors bg-transparent border-none cursor-pointer">
-            <span className="inline-flex size-6 shrink-0 items-center justify-center overflow-hidden rounded-full text-[22px] leading-none">🇹🇼</span>
+            <img src="https://hatscripts.github.io/circle-flags/flags/tw.svg" alt="" width={24} height={24} className="size-6 shrink-0 rounded-full" />
             繁體中文（台灣）
             <Icon name="chevron-down" type="line" size={16} />
           </button>
