@@ -985,7 +985,9 @@ button {
 }
 
 .dropdown__item {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   width: 100%;
   text-align: left;
   padding: 12px 24px;
@@ -998,6 +1000,18 @@ button {
   white-space: nowrap;
   text-decoration: none;
   line-height: 1.5;
+}
+
+.dropdown__flag {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: block;
+}
+
+.dropdown__trigger img.dropdown__flag {
+  margin-right: 0;
 }
 
 .dropdown__item:hover {

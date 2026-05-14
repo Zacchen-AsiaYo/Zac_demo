@@ -762,7 +762,9 @@
     }
 
     .dropdown__item {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       width: 100%;
       text-align: left;
       padding: 12px 24px;
@@ -776,6 +778,14 @@
       text-decoration: none;
       line-height: 1.5;
       box-sizing: border-box;
+    }
+
+    .dropdown__flag {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: block;
     }
 
     .dropdown__item:hover {
@@ -7799,16 +7809,16 @@
             );
           })()}
           <div className="dropdown seb-hide-mobile" data-dropdown="locale" data-open="false">
-            <span className="dropdown__trigger" aria-expanded="false" style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: '#262626', fontSize: 14, cursor: 'pointer' }}>
-              <span className="dropdown__label">简体中文</span>
+            <span className="dropdown__trigger" aria-expanded="false" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#262626', fontSize: 14, cursor: 'pointer' }}>
+              <img className="dropdown__flag" src="https://hatscripts.github.io/circle-flags/flags/cn.svg" alt="简体中文" width={24} height={24} />
               <span className="ay-icon ay-icon-line header__caret" style={{ fontSize: 16 }}>expand_more</span>
             </span>
             <div className="dropdown__menu" role="menu" hidden>
-              <a href="../zh-tw/SEB_v4_PP1_zh_tw.html" className="dropdown__item" data-value="zh-tw">繁體中文(台灣)</a>
-              <a href="#" className="dropdown__item" data-value="zh-hk">繁體中文(香港)</a>
-              <a href="../zh-cn/SEB_v4_PP1_zh_cn.html" className="dropdown__item dropdown__item--active" data-value="zh-cn">简体中文</a>
+              <a href="../zh-tw/SEB_v4_PP1_zh_tw.html" className="dropdown__item" data-value="zh-tw"><img className="dropdown__flag" src="https://hatscripts.github.io/circle-flags/flags/tw.svg" alt="" width={24} height={24} />繁體中文(台灣)</a>
+              <a href="#" className="dropdown__item" data-value="zh-hk"><img className="dropdown__flag" src="https://hatscripts.github.io/circle-flags/flags/hk.svg" alt="" width={24} height={24} />繁體中文(香港)</a>
+              <a href="../zh-cn/SEB_v4_PP1_zh_cn.html" className="dropdown__item dropdown__item--active" data-value="zh-cn"><img className="dropdown__flag" src="https://hatscripts.github.io/circle-flags/flags/cn.svg" alt="" width={24} height={24} />简体中文</a>
 
-              <a href="../en-us/SEB_v4_pp1_en_us.html" className="dropdown__item" data-value="en-us">English</a>
+              <a href="../en-us/SEB_v4_pp1_en_us.html" className="dropdown__item" data-value="en-us"><img className="dropdown__flag" src="https://hatscripts.github.io/circle-flags/flags/us.svg" alt="" width={24} height={24} />English</a>
 
             </div>
           </div>
