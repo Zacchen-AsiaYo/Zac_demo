@@ -323,17 +323,17 @@ export default function PassengerInfoPage() {
                 onClick={() => setLangOpen((v) => !v)}
                 className="flex items-center gap-1.5 hover:text-primary-6"
               >
-                <img src="https://hatscripts.github.io/circle-flags/flags/tw.svg" alt="繁體中文(台灣)" width={24} height={24} className="size-6 shrink-0 rounded-full" />
+                <img src="https://flagcdn.com/tw.svg" alt="繁體中文(台灣)" width={28} height={20} className="h-5 w-7 shrink-0 object-cover" />
                 <Icon name={langOpen ? "chevron-up" : "chevron-down"} type="line" size={12} />
               </button>
               {langOpen && (
                 <>
                   <div className="fixed inset-0 z-10" onClick={() => setLangOpen(false)} aria-hidden />
                   <div className="absolute right-0 top-[calc(100%+8px)] z-20 w-56 overflow-hidden rounded-lg border border-neutral-4 bg-white py-2 shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
-                    <a href="/template/passenger-info" className="flex items-center gap-2.5 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><img src="https://hatscripts.github.io/circle-flags/flags/tw.svg" alt="" width={24} height={24} className="size-6 shrink-0 rounded-full" />繁體中文(台灣)</a>
-                    <a href="#" className="flex items-center gap-2.5 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><img src="https://hatscripts.github.io/circle-flags/flags/hk.svg" alt="" width={24} height={24} className="size-6 shrink-0 rounded-full" />繁體中文(香港)</a>
-                    <a href="/template/passenger-info-zh-cn" className="flex items-center gap-2.5 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><img src="https://hatscripts.github.io/circle-flags/flags/cn.svg" alt="" width={24} height={24} className="size-6 shrink-0 rounded-full" />简体中文</a>
-                    <a href="/template/passenger-info-en-us" className="flex items-center gap-2.5 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><img src="https://hatscripts.github.io/circle-flags/flags/us.svg" alt="" width={24} height={24} className="size-6 shrink-0 rounded-full" />English</a>
+                    <a href="/template/passenger-info" className="flex items-center gap-2.5 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><img src="https://flagcdn.com/tw.svg" alt="" width={28} height={20} className="h-5 w-7 shrink-0 object-cover" />繁體中文(台灣)</a>
+                    <a href="#" className="flex items-center gap-2.5 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><img src="https://flagcdn.com/hk.svg" alt="" width={28} height={20} className="h-5 w-7 shrink-0 object-cover" />繁體中文(香港)</a>
+                    <a href="/template/passenger-info-zh-cn" className="flex items-center gap-2.5 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><img src="https://flagcdn.com/cn.svg" alt="" width={28} height={20} className="h-5 w-7 shrink-0 object-cover" />简体中文</a>
+                    <a href="/template/passenger-info-en-us" className="flex items-center gap-2.5 px-4 py-2.5 text-base text-neutral-9 hover:bg-neutral-3"><img src="https://flagcdn.com/us.svg" alt="" width={28} height={20} className="h-5 w-7 shrink-0 object-cover" />English</a>
                   </div>
                 </>
               )}

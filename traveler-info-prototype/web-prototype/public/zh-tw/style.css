@@ -1003,15 +1003,11 @@ button {
 }
 
 .dropdown__flag {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+  width: 28px;
+  height: 20px;
+  object-fit: cover;
   flex-shrink: 0;
   display: block;
-}
-
-.dropdown__trigger img.dropdown__flag {
-  margin-right: 0;
 }
 
 .dropdown__item:hover {
