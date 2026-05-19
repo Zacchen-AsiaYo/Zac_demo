@@ -302,7 +302,7 @@ export default function PassengerInfoZhCnPage() {
       {/* ── Site Header ─────────────────────────────────────────── */}
       <header className="border-b border-neutral-4 bg-white">
         <div className="mx-auto flex h-20 max-w-[1200px] items-center justify-between px-6">
-          <a href="/" className="shrink-0" aria-label="AsiaYo">
+          <a href="/zh-tw/" className="shrink-0" aria-label="AsiaYo">
             <img
               src="https://img.asiayo.com/static/images/main_logo_v3.svg"
               alt="AsiaYo"
