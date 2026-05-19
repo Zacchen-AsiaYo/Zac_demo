@@ -31,11 +31,6 @@
       "icon": "directions_bike"
     },
     {
-      "key": "tw_mar",
-      "label": "TaiwanMarathon",
-      "icon": "flag"
-    },
-    {
       "key": "golf",
       "label": "GolfTravel",
       "icon": "sports_golf"
@@ -2109,63 +2104,6 @@
       "url": "https://asiayo.com/zh-tw/activity/53001/",
       "chips": [],
       "soldOut": false
-    },
-    {
-      "id": "e103",
-      "raw_id": [
-        "oneday-tour"
-      ],
-      "title": "【TaichungDeparture】Taichung/日月潭/清境農場Chartered CarDay Tour ｜10小時",
-      "location": "Taiwan",
-      "headline": "★中TaiwanPopularAttraction暢遊 · ★自訂彈性漫遊Route · ★專屬1-7人Chartered CarService人數自由選",
-      "distance": "請提前5日前Book",
-      "includes": "Taichung南投300km內Chartered Car接送",
-      "price": 62,
-      "priceText": "每人最低 USD$ 62起",
-      "img": "https://gsimg.asiayo.com/ay-image-upload/1768052057219_1.png",
-      "url": "https://asiayo.com/zh-tw/activity/128885/",
-      "chips": [
-        "oneday"
-      ],
-      "soldOut": false
-    },
-    {
-      "id": "e104",
-      "raw_id": [
-        "oneday-tour"
-      ],
-      "title": "【TaichungDeparture】Taichung/鹿港Chartered CarDay Tour ｜10小時",
-      "location": "Taiwan",
-      "headline": "★中TaiwanPopularAttraction暢遊 · ★自訂彈性漫遊Route · ★專屬1-7人Chartered CarService人數自由選",
-      "distance": "請提前5日前Book",
-      "includes": "Taichung彰化300km內Chartered Car接送",
-      "price": 57,
-      "priceText": "每人最低 USD$ 57起",
-      "img": "https://gsimg.asiayo.com/ay-image-upload/1768052041196_2.png",
-      "url": "https://asiayo.com/zh-tw/activity/128884",
-      "chips": [
-        "oneday"
-      ],
-      "soldOut": false
-    },
-    {
-      "id": "e105",
-      "raw_id": [
-        "oneday-tour"
-      ],
-      "title": "【TaichungDeparture】Taichung市區Chartered CarDay Tour ｜10小時",
-      "location": "Taiwan",
-      "headline": "★中TaiwanPopularAttraction暢遊 · ★自訂彈性漫遊Route · ★專屬1-7人Chartered CarService人數自由選",
-      "distance": "請提前5日前Book",
-      "includes": "Taichung市區300km內Chartered Car接送",
-      "price": 55,
-      "priceText": "每人最低 USD$ 55起",
-      "img": "https://gsimg.asiayo.com/ay-image-upload/1768052010237_3.png",
-      "url": "https://asiayo.com/zh-tw/activity/128881",
-      "chips": [
-        "oneday"
-      ],
-      "soldOut": false
     }
   ],
   "comingSoon": [],
@@ -2495,6 +2433,10 @@
     "intl_mar": {
       "secondTabs": [
         {
+          "key": "s-tw-marathon",
+          "label": "Taiwan"
+        },
+        {
           "key": "s-kr-marathon",
           "label": "South Korea"
         },
@@ -2516,6 +2458,25 @@
         }
       ],
       "sections": [
+        {
+          "id": "s-tw-marathon",
+          "title": "Taiwan",
+          "subtitle": "",
+          "chips": [
+            "all"
+          ],
+          "eventIds": [
+            "e94",
+            "e95",
+            "e96",
+            "e97",
+            "e98",
+            "e99",
+            "e100",
+            "e101",
+            "e102"
+          ]
+        },
         {
           "id": "s-kr-marathon",
           "title": "South Korea",
@@ -2657,52 +2618,6 @@
             "e75",
             "e76",
             "e89"
-          ]
-        }
-      ]
-    },
-    "tw_mar": {
-      "secondTabs": [
-        {
-          "key": "s-tw-marathon",
-          "label": "FeaturedEvent"
-        },
-        {
-          "key": "s-oneday-tour",
-          "label": "Day Tour"
-        }
-      ],
-      "sections": [
-        {
-          "id": "s-tw-marathon",
-          "title": "FeaturedEvent",
-          "subtitle": "",
-          "chips": [
-            "all"
-          ],
-          "eventIds": [
-            "e94",
-            "e95",
-            "e96",
-            "e97",
-            "e98",
-            "e99",
-            "e100",
-            "e101",
-            "e102"
-          ]
-        },
-        {
-          "id": "s-oneday-tour",
-          "title": "Day Tour",
-          "subtitle": "",
-          "chips": [
-            "all"
-          ],
-          "eventIds": [
-            "e103",
-            "e104",
-            "e105"
           ]
         }
       ]

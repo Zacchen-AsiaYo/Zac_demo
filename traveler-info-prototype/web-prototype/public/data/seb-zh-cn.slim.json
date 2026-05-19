@@ -21,10 +21,6 @@
       "label": "国際单车"
     },
     {
-      "key": "tw_mar",
-      "label": "台湾马拉松"
-    },
-    {
       "key": "golf",
       "label": "高尔夫旅游"
     },
@@ -160,6 +156,10 @@
     "intl_mar": {
       "secondTabs": [
         {
+          "key": "s-tw-marathon",
+          "label": "台湾"
+        },
+        {
           "key": "s-kr-marathon",
           "label": "韩国"
         },
@@ -181,6 +181,11 @@
         }
       ],
       "sections": [
+        {
+          "id": "s-tw-marathon",
+          "title": "台湾",
+          "subtitle": ""
+        },
         {
           "id": "s-kr-marathon",
           "title": "韩国",
@@ -238,30 +243,6 @@
         {
           "id": "s-intl_cyc-all",
           "title": "国際单车",
-          "subtitle": ""
-        }
-      ]
-    },
-    "tw_mar": {
-      "secondTabs": [
-        {
-          "key": "s-tw-marathon",
-          "label": "精选赛事"
-        },
-        {
-          "key": "s-oneday-tour",
-          "label": "一日游"
-        }
-      ],
-      "sections": [
-        {
-          "id": "s-tw-marathon",
-          "title": "精选赛事",
-          "subtitle": ""
-        },
-        {
-          "id": "s-oneday-tour",
-          "title": "一日游",
           "subtitle": ""
         }
       ]
@@ -1232,33 +1213,6 @@
       "distance": "方案日期：2026/04/24",
       "includes": "精选赛事友善住宿",
       "priceText": "每房每晚最低USD$ 87起"
-    },
-    {
-      "id": "e103",
-      "title": "【台中出发】台中/日月潭/清境農場包车一日游 ｜10小時",
-      "location": "台湾",
-      "headline": "★中台湾热门景点暢遊 · ★自訂彈性漫遊路线 · ★專屬1-7人包车服务人數自由選",
-      "distance": "請提前5日前预订",
-      "includes": "台中南投300公里內包车接送",
-      "priceText": "每人最低 USD$ 62起"
-    },
-    {
-      "id": "e104",
-      "title": "【台中出发】台中/鹿港包车一日游 ｜10小時",
-      "location": "台湾",
-      "headline": "★中台湾热门景点暢遊 · ★自訂彈性漫遊路线 · ★專屬1-7人包车服务人數自由選",
-      "distance": "請提前5日前预订",
-      "includes": "台中彰化300公里內包车接送",
-      "priceText": "每人最低 USD$ 57起"
-    },
-    {
-      "id": "e105",
-      "title": "【台中出发】台中市區包车一日游 ｜10小時",
-      "location": "台湾",
-      "headline": "★中台湾热门景点暢遊 · ★自訂彈性漫遊路线 · ★專屬1-7人包车服务人數自由選",
-      "distance": "請提前5日前预订",
-      "includes": "台中市區300公里內包车接送",
-      "priceText": "每人最低 USD$ 55起"
     }
   ]
 }

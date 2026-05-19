@@ -21,10 +21,6 @@
       "label": "國際Cycling"
     },
     {
-      "key": "tw_mar",
-      "label": "TaiwanMarathon"
-    },
-    {
       "key": "golf",
       "label": "GolfTravel"
     },
@@ -160,6 +156,10 @@
     "intl_mar": {
       "secondTabs": [
         {
+          "key": "s-tw-marathon",
+          "label": "Taiwan"
+        },
+        {
           "key": "s-kr-marathon",
           "label": "South Korea"
         },
@@ -181,6 +181,11 @@
         }
       ],
       "sections": [
+        {
+          "id": "s-tw-marathon",
+          "title": "Taiwan",
+          "subtitle": ""
+        },
         {
           "id": "s-kr-marathon",
           "title": "South Korea",
@@ -238,30 +243,6 @@
         {
           "id": "s-intl_cyc-all",
           "title": "國際Cycling",
-          "subtitle": ""
-        }
-      ]
-    },
-    "tw_mar": {
-      "secondTabs": [
-        {
-          "key": "s-tw-marathon",
-          "label": "FeaturedEvent"
-        },
-        {
-          "key": "s-oneday-tour",
-          "label": "Day Tour"
-        }
-      ],
-      "sections": [
-        {
-          "id": "s-tw-marathon",
-          "title": "FeaturedEvent",
-          "subtitle": ""
-        },
-        {
-          "id": "s-oneday-tour",
-          "title": "Day Tour",
           "subtitle": ""
         }
       ]
@@ -1232,33 +1213,6 @@
       "distance": "方案Date：2026/04/24",
       "includes": "FeaturedEvent友善Accommodation",
       "priceText": "每房每晚最低USD$ 87起"
-    },
-    {
-      "id": "e103",
-      "title": "【TaichungDeparture】Taichung/日月潭/清境農場Chartered CarDay Tour ｜10小時",
-      "location": "Taiwan",
-      "headline": "★中TaiwanPopularAttraction暢遊 · ★自訂彈性漫遊Route · ★專屬1-7人Chartered CarService人數自由選",
-      "distance": "請提前5日前Book",
-      "includes": "Taichung南投300km內Chartered Car接送",
-      "priceText": "每人最低 USD$ 62起"
-    },
-    {
-      "id": "e104",
-      "title": "【TaichungDeparture】Taichung/鹿港Chartered CarDay Tour ｜10小時",
-      "location": "Taiwan",
-      "headline": "★中TaiwanPopularAttraction暢遊 · ★自訂彈性漫遊Route · ★專屬1-7人Chartered CarService人數自由選",
-      "distance": "請提前5日前Book",
-      "includes": "Taichung彰化300km內Chartered Car接送",
-      "priceText": "每人最低 USD$ 57起"
-    },
-    {
-      "id": "e105",
-      "title": "【TaichungDeparture】Taichung市區Chartered CarDay Tour ｜10小時",
-      "location": "Taiwan",
-      "headline": "★中TaiwanPopularAttraction暢遊 · ★自訂彈性漫遊Route · ★專屬1-7人Chartered CarService人數自由選",
-      "distance": "請提前5日前Book",
-      "includes": "Taichung市區300km內Chartered Car接送",
-      "priceText": "每人最低 USD$ 55起"
     }
   ]
 }

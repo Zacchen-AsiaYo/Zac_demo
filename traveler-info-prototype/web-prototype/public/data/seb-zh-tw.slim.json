@@ -21,10 +21,6 @@
       "label": "國際單車"
     },
     {
-      "key": "tw_mar",
-      "label": "台灣馬拉松"
-    },
-    {
       "key": "golf",
       "label": "高爾夫旅遊"
     },
@@ -160,6 +156,10 @@
     "intl_mar": {
       "secondTabs": [
         {
+          "key": "s-tw-marathon",
+          "label": "台灣"
+        },
+        {
           "key": "s-kr-marathon",
           "label": "韓國"
         },
@@ -181,6 +181,11 @@
         }
       ],
       "sections": [
+        {
+          "id": "s-tw-marathon",
+          "title": "台灣",
+          "subtitle": ""
+        },
         {
           "id": "s-kr-marathon",
           "title": "韓國",
@@ -238,30 +243,6 @@
         {
           "id": "s-intl_cyc-all",
           "title": "國際單車",
-          "subtitle": ""
-        }
-      ]
-    },
-    "tw_mar": {
-      "secondTabs": [
-        {
-          "key": "s-tw-marathon",
-          "label": "精選賽事"
-        },
-        {
-          "key": "s-oneday-tour",
-          "label": "一日遊"
-        }
-      ],
-      "sections": [
-        {
-          "id": "s-tw-marathon",
-          "title": "精選賽事",
-          "subtitle": ""
-        },
-        {
-          "id": "s-oneday-tour",
-          "title": "一日遊",
           "subtitle": ""
         }
       ]
@@ -1232,33 +1213,6 @@
       "distance": "方案日期：2026/04/24",
       "includes": "精選賽事友善住宿",
       "priceText": "每房每晚最低NT$2,600起"
-    },
-    {
-      "id": "e103",
-      "title": "【台中出發】台中/日月潭/清境農場包車一日遊 ｜10小時",
-      "location": "台灣",
-      "headline": "★中台灣熱門景點暢遊 · ★自訂彈性漫遊路線 · ★專屬1-7人包車服務人數自由選",
-      "distance": "請提前5日前預訂",
-      "includes": "台中南投300公里內包車接送",
-      "priceText": "每人最低 NT$1,875 起"
-    },
-    {
-      "id": "e104",
-      "title": "【台中出發】台中/鹿港包車一日遊 ｜10小時",
-      "location": "台灣",
-      "headline": "★中台灣熱門景點暢遊 · ★自訂彈性漫遊路線 · ★專屬1-7人包車服務人數自由選",
-      "distance": "請提前5日前預訂",
-      "includes": "台中彰化300公里內包車接送",
-      "priceText": "每人最低 NT$1,700 起"
-    },
-    {
-      "id": "e105",
-      "title": "【台中出發】台中市區包車一日遊 ｜10小時",
-      "location": "台灣",
-      "headline": "★中台灣熱門景點暢遊 · ★自訂彈性漫遊路線 · ★專屬1-7人包車服務人數自由選",
-      "distance": "請提前5日前預訂",
-      "includes": "台中市區300公里內包車接送",
-      "priceText": "每人最低 NT$1,650 起"
     }
   ]
 }

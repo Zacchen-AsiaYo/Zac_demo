@@ -31,11 +31,6 @@
       "icon": "directions_bike"
     },
     {
-      "key": "tw_mar",
-      "label": "台灣馬拉松",
-      "icon": "flag"
-    },
-    {
       "key": "golf",
       "label": "高爾夫旅遊",
       "icon": "sports_golf"
@@ -2109,63 +2104,6 @@
       "url": "https://asiayo.com/zh-tw/activity/53001/",
       "chips": [],
       "soldOut": false
-    },
-    {
-      "id": "e103",
-      "raw_id": [
-        "oneday-tour"
-      ],
-      "title": "【台中出發】台中/日月潭/清境農場包車一日遊 ｜10小時",
-      "location": "台灣",
-      "headline": "★中台灣熱門景點暢遊 · ★自訂彈性漫遊路線 · ★專屬1-7人包車服務人數自由選",
-      "distance": "請提前5日前預訂",
-      "includes": "台中南投300公里內包車接送",
-      "price": 1875,
-      "priceText": "每人最低 NT$1,875 起",
-      "img": "https://gsimg.asiayo.com/ay-image-upload/1768052057219_1.png",
-      "url": "https://asiayo.com/zh-tw/activity/128885/",
-      "chips": [
-        "oneday"
-      ],
-      "soldOut": false
-    },
-    {
-      "id": "e104",
-      "raw_id": [
-        "oneday-tour"
-      ],
-      "title": "【台中出發】台中/鹿港包車一日遊 ｜10小時",
-      "location": "台灣",
-      "headline": "★中台灣熱門景點暢遊 · ★自訂彈性漫遊路線 · ★專屬1-7人包車服務人數自由選",
-      "distance": "請提前5日前預訂",
-      "includes": "台中彰化300公里內包車接送",
-      "price": 1700,
-      "priceText": "每人最低 NT$1,700 起",
-      "img": "https://gsimg.asiayo.com/ay-image-upload/1768052041196_2.png",
-      "url": "https://asiayo.com/zh-tw/activity/128884",
-      "chips": [
-        "oneday"
-      ],
-      "soldOut": false
-    },
-    {
-      "id": "e105",
-      "raw_id": [
-        "oneday-tour"
-      ],
-      "title": "【台中出發】台中市區包車一日遊 ｜10小時",
-      "location": "台灣",
-      "headline": "★中台灣熱門景點暢遊 · ★自訂彈性漫遊路線 · ★專屬1-7人包車服務人數自由選",
-      "distance": "請提前5日前預訂",
-      "includes": "台中市區300公里內包車接送",
-      "price": 1650,
-      "priceText": "每人最低 NT$1,650 起",
-      "img": "https://gsimg.asiayo.com/ay-image-upload/1768052010237_3.png",
-      "url": "https://asiayo.com/zh-tw/activity/128881",
-      "chips": [
-        "oneday"
-      ],
-      "soldOut": false
     }
   ],
   "comingSoon": [],
@@ -2495,6 +2433,10 @@
     "intl_mar": {
       "secondTabs": [
         {
+          "key": "s-tw-marathon",
+          "label": "台灣"
+        },
+        {
           "key": "s-kr-marathon",
           "label": "韓國"
         },
@@ -2516,6 +2458,25 @@
         }
       ],
       "sections": [
+        {
+          "id": "s-tw-marathon",
+          "title": "台灣",
+          "subtitle": "",
+          "chips": [
+            "all"
+          ],
+          "eventIds": [
+            "e94",
+            "e95",
+            "e96",
+            "e97",
+            "e98",
+            "e99",
+            "e100",
+            "e101",
+            "e102"
+          ]
+        },
         {
           "id": "s-kr-marathon",
           "title": "韓國",
@@ -2657,52 +2618,6 @@
             "e75",
             "e76",
             "e89"
-          ]
-        }
-      ]
-    },
-    "tw_mar": {
-      "secondTabs": [
-        {
-          "key": "s-tw-marathon",
-          "label": "精選賽事"
-        },
-        {
-          "key": "s-oneday-tour",
-          "label": "一日遊"
-        }
-      ],
-      "sections": [
-        {
-          "id": "s-tw-marathon",
-          "title": "精選賽事",
-          "subtitle": "",
-          "chips": [
-            "all"
-          ],
-          "eventIds": [
-            "e94",
-            "e95",
-            "e96",
-            "e97",
-            "e98",
-            "e99",
-            "e100",
-            "e101",
-            "e102"
-          ]
-        },
-        {
-          "id": "s-oneday-tour",
-          "title": "一日遊",
-          "subtitle": "",
-          "chips": [
-            "all"
-          ],
-          "eventIds": [
-            "e103",
-            "e104",
-            "e105"
           ]
         }
       ]
