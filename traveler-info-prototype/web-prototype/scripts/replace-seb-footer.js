@@ -155,8 +155,6 @@ const FOOTER_ZH_CN =
     colDescription('AsiaYo 精选全球邮轮、跟团旅游、交通通票、特色住宿（高铁套票、豪华露营、包栋住宿），以及马拉松、登山、高尔夫等标志性运动赛事，一站式平台全方位涵盖。')
   ) +
   col(
-    colTitle('下载 App') +
-    appBadges() +
     colTitle('社交媒体') +
     socialIcons(['wordpress', 'facebook', 'instagram'])
   ) +
@@ -186,8 +184,6 @@ const FOOTER_EN_US =
     colDescription('AsiaYo curates global cruises, group tours, transport passes, unique stays (HSR packages, glamping, whole-house rentals), and signature sports events like marathons, hiking, and golf—all in one platform.')
   ) +
   col(
-    colTitle('Download App') +
-    appBadges() +
     colTitle('Follow Us') +
     socialIcons(['wordpress', 'facebook', 'instagram'])
   ) +
