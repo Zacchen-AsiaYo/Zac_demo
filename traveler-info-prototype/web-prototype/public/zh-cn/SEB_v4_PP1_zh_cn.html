@@ -8173,10 +8173,13 @@
             </div>
 
             {/* Headline — split on ★ so each starred bullet is its own line */}
-            <div style={{ fontSize: 14, color: '#595959', lineHeight: 1.55 }}>
-              {splitHeadline(e.headline).map((line, i) => (
-                <div key={i}>{line}</div>
-              ))}
+            <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 14, color: '#595959', lineHeight: 1.55 }}>
+              <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: '50%', backgroundColor: '#f4511e', marginTop: 6, flexShrink: 0 }}></span>
+              <div style={{ flex: 1 }}>
+                {splitHeadline(e.headline).map((line, i) => (
+                  <div key={i}>{line}</div>
+                ))}
+              </div>
             </div>
 
             {/* Info block — distance / includes / price, each row icon + text */}
@@ -8192,6 +8195,7 @@
               )}
               {e.includes && (
                 <div style={{ display: 'flex', gap: 6, alignItems: 'flex-start', fontSize: 14, color: '#595959', lineHeight: 1.55 }}>
+                  <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: '50%', backgroundColor: '#f4511e', marginTop: 6, marginRight: 2, flexShrink: 0 }}></span>
                   <span className="ay-icon ay-icon-line" style={{ fontSize: 18, marginTop: 2, color: '#04ad00' }}>check_circle</span>
                   <span style={{ flex: 1 }}>{e.includes}</span>
                 </div>
