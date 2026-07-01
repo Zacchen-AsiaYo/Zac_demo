@@ -869,6 +869,19 @@ export default function PackagePage() {
 
   return (
     <div>
+      {/* Prototype 導覽入口 → /sitemap */}
+      <a
+        href="/sitemap"
+        title="回到 Prototype 導覽頁"
+        className="fixed bottom-4 left-4 z-[9999] inline-flex items-center gap-1.5 rounded-full bg-neutral-9/90 px-3.5 py-2 text-[13px] font-medium text-white no-underline shadow-lg backdrop-blur transition-colors hover:bg-neutral-9"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+          <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+          <line x1="8" y1="2" x2="8" y2="18" />
+          <line x1="16" y1="6" x2="16" y2="22" />
+        </svg>
+        導覽頁
+      </a>
       <SiteHeader />
       <BannerSection />
       <SebHeading />
