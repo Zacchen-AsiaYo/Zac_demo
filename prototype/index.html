@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cruise MLP 靜態原型</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .cards{display:flex;gap:24px;flex-wrap:wrap;padding:32px 0 64px;}
+  .card{flex:1 1 360px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .card img{height:180px;width:100%;object-fit:cover;}
+  .card .body{padding:16px;}
+  .card h3{margin:0 0 8px;font-size:18px;}
+  .card p{margin:0 0 16px;font-size:14px;color:var(--text-2);}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrapper">
+    <a class="logo" href="#"><img src="https://img.asiayo.com/static/images/main_logo_v3.svg" alt="AsiaYo"></a>
+    <nav class="main-nav"><a href="#">郵輪</a><a href="#">跟團旅遊</a><a href="#">住宿</a><a href="#">景點行程</a><a href="#">台灣高鐵</a></nav>
+  </div>
+</header>
+<div class="wrapper">
+  <h1 class="product-title" style="margin-top:32px">Cruise MLP — View page 靜態原型</h1>
+  <p style="color:var(--text-2);max-width:720px">
+    依 <code>asiayo.com/zh-tw/cruise/item/137321/</code>（Fly cruise）與
+    <code>asiayo.com/zh-tw/cruise/item/133872/</code>（Home port）復刻的靜態版型。
+    圖片沿用原站資源；僅保留出發日切換與艙等展開兩個視覺互動，不含實際訂購流程。
+    <br><strong>Home port 頁的「選擇出發日」區塊已改為與 Fly cruise 相同的「艙等分組 → 艙等／房型選項」版型。</strong>
+    <br><strong>2026-08-19：兩頁內容已依《郵輪標籤書寫規範》重新標記與格式化</strong>——XML 標籤（藍綠＝DNT、棕金＝可翻譯結構化）與
+    <code>translate</code> 詞庫標籤（紫）直接顯示在頁面上，段落改為 11 段固定結構；規範 1.4.1／1.4.2／1.5 未套用，
+    屬性文字僅「與 XML 標籤有子母關係」者包 translate。未標記的原始復刻版備份於 <code>_original/</code>
+    （<a href="_original/fly-cruise.html">fly</a>／<a href="_original/home-port.html">home</a>）。
+    <br><strong>2026-08-20：每頁提供「標記版」與「無標籤版」兩個入口</strong>——無標籤版為剝除全部 XML／translate 視覺標記的純文字對照版（<a href="fly-cruise_plain.html">fly</a>／<a href="home-port_plain.html">home</a>）。
+    <br><strong>2026-08-20（二）：每個商品擴充為四個版本</strong>——
+    ①<strong>標籤版</strong>（編輯視角：XML／translate 標記全顯示，被保護內容文字為紅色）
+    ②<strong>plain 版</strong>（剝除標記的純文字對照，雙語值保留）
+    ③<strong>英文版 _en</strong>（全頁英文：模擬 en-us 讀者實際頁面，繁中散文／屬性詞／站台 chrome 全數翻譯，被保護值直接取英文，無標記、無編輯註記）
+    ④<strong>讀者語系版 _zh</strong>（被保護雙語值只留繁中、英文對照移除，純英數值原樣保留）。
+    同日新規則：地點類值的中文主體不再帶全形（），附註改空格銜接（如「阿拉斯加州凱奇坎 沃德灣」）。
+  </p>
+  <div class="cards">
+    <a class="card" href="fly-cruise.html" style="color:inherit;text-decoration:none">
+      <img src="https://image-store.asiayo.com/bnb/137321/3840xauto/desc_n11o4odQPJ8NeR.webp" alt="">
+      <div class="body">
+        <h3>Fly cruise</h3>
+        <p>【挪威永恆號 NCL Encore】 阿拉斯加 8 日遊輪：冰河灣、史凱威、朱諾和凱奇坎<br>商品 ID 137321</p>
+        <span class="btn btn--primary" style="display:inline-block">標籤版（紅字）</span>
+        <span class="btn" style="display:inline-block" data-plain="fly-cruise_plain.html">plain 版</span>
+        <span class="btn" style="display:inline-block" data-plain="fly-cruise_en.html">英文版（全頁英文，被保護值直接取英文）</span>
+        <span class="btn" style="display:inline-block" data-plain="fly-cruise_zh.html">讀者語系版 _zh</span>
+      </div>
+    </a>
+    <a class="card" href="home-port.html" style="color:inherit;text-decoration:none">
+      <img src="https://image-store.asiayo.com/bnb/133872/3840xauto/desc_gBDbLNmIRSLXMh.webp" alt="">
+      <div class="body">
+        <h3>Home port</h3>
+        <p>【贈郵輪小費】【MSC神女號】MSC EURIBIA 地中海7晚往返之旅：從義大利熱那亞（波托菲諾）出發<br>商品 ID 133872</p>
+        <span class="btn btn--primary" style="display:inline-block">標籤版（紅字）</span>
+        <span class="btn" style="display:inline-block" data-plain="home-port_plain.html">plain 版</span>
+        <span class="btn" style="display:inline-block" data-plain="home-port_en.html">英文版（全頁英文，被保護值直接取英文）</span>
+        <span class="btn" style="display:inline-block" data-plain="home-port_zh.html">讀者語系版 _zh</span>
+      </div>
+    </a>
+  </div>
+</div>
+<script>
+document.querySelectorAll('[data-plain]').forEach(function(b){
+  b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();location.href=b.dataset.plain;});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+/* ===========================================================
+   AsiaYo Cruise — View page static prototype
+   目的：MLP survey 用的靜態樣式稿（Fly cruise / Home port）
+   =========================================================== */
+
+:root{
+  --brand:#1e9fd2;
+  --brand-dark:#1789b6;
+  --brand-light:#e8f6fc;
+  --text:#262626;
+  --text-2:#595959;
+  --text-3:#8c8c8c;
+  --line:#e0e0e0;
+  --line-2:#f0f0f0;
+  --bg-soft:#fafafa;
+  --bg-mute:#f5f5f5;
+  --warn-bg:#fffbe6;
+  --warn-line:#ffe58f;
+  --danger:#e8613c;
+  --radius:4px;
+  --container:1280px;
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  font-family:"Noto Sans","Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--text);
+  background:#fff;
+}
+img{max-width:100%;display:block;}
+a{color:var(--brand);text-decoration:none;}
+a:hover{text-decoration:underline;}
+button{font:inherit;cursor:pointer;}
+
+.wrapper{max-width:var(--container);margin:0 auto;padding:0 32px;}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:#fff;border-bottom:1px solid var(--line-2);
+}
+.site-header .wrapper{display:flex;align-items:center;height:60px;gap:32px;}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px;color:var(--brand);}
+.logo img{height:26px;width:auto;}
+.main-nav{display:flex;gap:24px;font-size:15px;}
+.main-nav a{color:var(--text);}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:15px;}
+.header-right a{color:var(--text);}
+
+/* ---------- Breadcrumb / title ---------- */
+.breadcrumb{font-size:13px;color:var(--text-3);padding:16px 0 8px;}
+.breadcrumb a{color:var(--text-3);}
+.breadcrumb span{margin:0 6px;}
+.tag-chip{
+  display:inline-block;font-size:12px;line-height:1;
+  color:var(--brand);border:1px solid var(--brand);
+  border-radius:var(--radius);padding:5px 8px;margin-bottom:8px;
+}
+h1.product-title{
+  margin:0 0 16px;font-size:32px;line-height:44px;font-weight:700;color:var(--text);
+}
+
+/* ---------- Gallery ---------- */
+.gallery{
+  display:grid;grid-template-columns:667fr 267fr 267fr;
+  grid-template-rows:196px 196px;gap:8px;height:400px;position:relative;
+}
+.gallery .g-main{grid-column:1;grid-row:1 / span 2;}
+.gallery .g-wide{grid-column:2 / span 2;grid-row:1;}
+.gallery figure{margin:0;position:relative;overflow:hidden;background:var(--bg-mute);}
+.gallery img{width:100%;height:100%;object-fit:cover;}
+.gallery .badge-new{
+  position:absolute;top:12px;right:12px;
+  background:rgba(0,0,0,.8);color:#fff;font-size:12px;
+  border-radius:var(--radius);padding:4px 8px;
+}
+.gallery .g-more{position:relative;}
+.gallery .g-more .mask{
+  position:absolute;inset:0;background:rgba(60,60,60,.75);
+  color:#fff;font-size:13px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;line-height:1.5;
+}
+
+/* ---------- Anchor nav ---------- */
+.anchor-nav{
+  display:flex;gap:24px;border-bottom:1px solid var(--line-2);
+  margin-top:16px;overflow-x:auto;
+}
+.anchor-nav a{
+  padding:16px 0;font-size:14px;color:var(--text-2);white-space:nowrap;
+  border-bottom:2px solid transparent;
+}
+.anchor-nav a.is-active{color:var(--brand);border-bottom-color:var(--brand);}
+.anchor-nav a:hover{text-decoration:none;color:var(--brand);}
+
+/* ---------- Layout ---------- */
+.content-container{display:flex;gap:24px;align-items:flex-start;padding:24px 0 64px;}
+.main-content{flex:0 0 840px;max-width:840px;display:flex;flex-direction:column;gap:24px;}
+.side-content{flex:0 0 352px;position:sticky;top:76px;}
+
+/* ---------- Sections ---------- */
+.section h2{font-size:24px;font-weight:700;color:var(--text);margin:0 0 16px;}
+.section--soft{background:var(--bg-soft);border-radius:var(--radius);padding:16px;}
+
+.announcement{
+  background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:var(--radius);
+  padding:12px 16px;font-size:14px;color:var(--text-2);display:flex;gap:8px;
+}
+.announcement strong{color:var(--text);font-weight:700;}
+
+/* ---------- 選擇方案 ---------- */
+.sub-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.sub-title h3{margin:0;font-size:18px;font-weight:700;}
+.view-toggle{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;}
+.view-toggle button{
+  border:0;background:#fff;padding:7px 16px;font-size:14px;color:var(--text);
+}
+.view-toggle button.is-off{background:var(--bg-mute);color:var(--text-3);}
+
+.date-rail{margin-bottom:16px;}
+.date-rail .year{font-size:13px;color:var(--text-3);}
+.date-rail .rail{
+  position:relative;height:12px;margin:2px 0 8px;
+}
+.date-rail .rail::before{
+  content:"";position:absolute;left:4px;right:0;top:5px;height:0;
+  border-top:1px dotted var(--brand);
+}
+.date-rail .rail::after{
+  content:"";position:absolute;left:0;top:2px;width:8px;height:8px;
+  border-radius:50%;background:var(--brand);
+}
+.date-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.date-pills button{
+  border:1px solid var(--line);background:#fff;border-radius:100px;
+  padding:7px 20px;font-size:16px;color:var(--text);
+}
+.date-pills button.is-active{background:var(--brand);border-color:var(--brand);color:#fff;}
+
+/* 艙等分組（Fly cruise layout） */
+.cabin-group{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--radius);
+  margin-bottom:12px;
+}
+.cabin-group.is-soldout{background:var(--bg-mute);}
+.cabin-group__head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px;gap:16px;align-items:flex-start;
+}
+.cabin-group__name{font-size:16px;font-weight:700;}
+.cabin-group__right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.price{font-size:16px;font-weight:700;color:var(--text);}
+.price .unit{font-size:12px;font-weight:400;color:var(--text-2);margin-left:4px;}
+.soldout-text{font-size:14px;color:var(--text-3);}
+.btn{
+  border-radius:var(--radius);border:1px solid var(--brand);
+  background:#fff;color:var(--brand);padding:6px 20px;font-size:14px;
+}
+.btn:hover{background:var(--brand-light);}
+.btn--primary{background:var(--brand);color:#fff;}
+.btn--primary:hover{background:var(--brand-dark);}
+.btn--block{display:block;width:100%;padding:11px 24px;font-size:16px;text-align:center;}
+.btn:disabled{background:#bfe4f4;border-color:#bfe4f4;color:#fff;cursor:not-allowed;}
+
+.cabin-group__body{
+  border-top:1px solid var(--line-2);padding:16px;display:none;
+}
+.cabin-group.is-open .cabin-group__body{display:block;}
+.opt-label{font-size:13px;color:var(--text-2);margin-bottom:8px;}
+.opt-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.opt{
+  border:1px solid var(--line);background:#fff;border-radius:var(--radius);
+  padding:6px 12px;font-size:13px;color:var(--text);
+}
+.opt.is-active{border-color:var(--brand);color:var(--brand);font-weight:700;}
+.opt.is-disabled{background:var(--bg-mute);color:#bfbfbf;border-color:var(--line-2);cursor:not-allowed;}
+.plan-note{
+  font-size:13px;color:var(--text-2);line-height:1.7;
+  border-left:3px solid var(--line);padding-left:12px;margin:0 0 16px;
+}
+.stock{font-size:13px;color:var(--danger);}
+.cabin-group__foot{display:flex;align-items:center;justify-content:flex-end;gap:16px;}
+.hint{font-size:13px;color:var(--text-3);}
+
+/* ---------- 行程簡介 timeline ---------- */
+.itinerary-intro{margin-bottom:24px;}
+.itinerary-intro img{width:100%;border-radius:var(--radius);margin-bottom:12px;}
+.itinerary-intro .desc{font-size:14px;color:var(--text-2);white-space:pre-line;}
+.day{position:relative;padding:0 0 24px 24px;}
+.day::before{
+  content:"";position:absolute;left:0;top:6px;width:12px;height:12px;
+  border-radius:50%;background:#5cc5ea;
+}
+.day::after{
+  content:"";position:absolute;left:5px;top:22px;bottom:0;
+  border-left:1px dotted #d9d9d9;
+}
+.day:last-child::after{display:none;}
+.day__title{font-size:16px;font-weight:700;color:var(--text-2);margin-bottom:8px;}
+.day__img{width:100%;border-radius:var(--radius);margin:8px 0 12px;}
+.day__desc{font-size:14px;color:var(--text-2);white-space:pre-line;line-height:1.8;}
+
+/* ---------- Rich text (CMS content) ---------- */
+.rte{font-size:15px;color:var(--text-2);line-height:1.9;}
+.rte p{margin:0 0 8px;}
+.rte h3{font-size:17px;color:var(--text);margin:24px 0 8px;}
+.rte strong{color:var(--text);}
+.rte ul,.rte ol{margin:0 0 12px;padding-left:24px;}
+.rte li{margin-bottom:4px;}
+.rte img{width:100%;border-radius:var(--radius);margin:8px 0;}
+.rte a{text-decoration:underline;}
+
+/* ---------- Sidebar ---------- */
+.price-card{
+  border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff;
+}
+.price-card__price{font-size:20px;font-weight:700;}
+.price-card__price .unit{font-size:12px;font-weight:400;color:var(--text-2);margin-left:4px;}
+.price-card__meta{font-size:14px;color:var(--text-2);margin:8px 0 16px;}
+
+/* ---------- Secondary content ---------- */
+.secondary{border-top:1px solid var(--line-2);padding-top:24px;display:flex;flex-direction:column;gap:24px;}
+.rating-box{display:flex;align-items:center;gap:16px;font-size:15px;}
+.rating-box .btn{padding:6px 24px;}
+.seo-faq{font-size:15px;color:var(--text-2);line-height:1.9;}
+.seo-faq h3{font-size:16px;color:var(--text);margin:16px 0 8px;}
+.seo-faq p{margin:0 0 8px;}
+.help-box{font-size:15px;color:var(--text-2);}
+.divider{border-top:1px solid var(--line-2);}
+
+/* ---------- Mobile sticky bar ---------- */
+.mobile-bar{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:#fff;border-top:1px solid var(--line);padding:12px 16px;
+  align-items:center;justify-content:space-between;gap:12px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--bg-soft);border-top:1px solid var(--line-2);padding:40px 0 24px;font-size:14px;color:var(--text-2);}
+.footer-cols{display:flex;flex-wrap:wrap;gap:48px;}
+.footer-col{min-width:180px;}
+.footer-col h4{font-size:15px;color:var(--text);margin:0 0 12px;}
+.footer-col ul{list-style:none;margin:0;padding:0;}
+.footer-col li{margin-bottom:8px;}
+.footer-col a{color:var(--text-2);}
+.footer-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px;}
+.footer-logos img{height:24px;width:auto;}
+.footer-bottom{border-top:1px solid var(--line);margin-top:32px;padding-top:16px;font-size:13px;color:var(--text-3);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;}
+
+/* ---------- Prototype banner ---------- */
+.proto-bar{
+  background:#262626;color:#fff;font-size:13px;padding:8px 0;
+}
+.proto-bar .wrapper{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+.proto-bar a{color:#7fd4f2;}
+.proto-bar .pill{background:#1e9fd2;border-radius:100px;padding:2px 10px;font-size:12px;}
+
+/* ---------- RWD ---------- */
+@media (max-width:1023px){
+  .wrapper{padding:0 16px;}
+  .content-container{flex-direction:column;padding-bottom:96px;}
+  .main-content{flex:1 1 auto;max-width:100%;width:100%;}
+  .side-content{display:none;}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 110px;height:auto;}
+  .gallery .g-main{grid-column:1 / span 2;grid-row:1;}
+  .gallery .g-wide{grid-column:1;grid-row:2;}
+  .gallery figure:nth-child(3){display:none;}
+  .gallery .g-more{grid-column:2;grid-row:2;}
+  h1.product-title{font-size:22px;line-height:32px;}
+  .main-nav{display:none;}
+  .mobile-bar{display:flex;}
+}
+
+/* ===========================================================
+   標籤書寫規範示意（2026-08-19；2026-08-20 內容文字改紅）
+   .xml.dnt  = DNT XML 標籤（不翻譯值）      → 底色藍綠
+   .xml.tr   = 可翻譯 XML 結構化標籤          → 底色棕金
+   .xml.gl   = translate 詞庫標籤（屬性文字） → 底色紫
+   三者的「被保護內容文字」一律紅色 #d32f2f（2026-08-20 慣例）；
+   ::before/::after 的開閉標籤字顏色維持各自原色。
+   =========================================================== */
+.xml{border-radius:3px;padding:1px 3px;margin:0 1px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+.xml::before,.xml::after{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.7em;font-weight:600;opacity:.9;white-space:nowrap;}
+.xml::before{content:"<" attr(data-tag) ">";margin-right:2px;}
+.xml::after{content:"</" attr(data-tag) ">";margin-left:2px;}
+.xml.dnt{background:#e2f0f1;color:#d32f2f;}
+.xml.dnt::before,.xml.dnt::after{color:#0d6b79;}
+.xml.tr{background:#f4eedc;color:#d32f2f;}
+.xml.tr::before,.xml.tr::after{color:#8a6a16;}
+.xml.gl{background:#ece8f5;color:#d32f2f;}
+.xml.gl::before{content:"<translate={id}>";color:#5b4b8a;}
+.xml.gl::after{content:"</translate>";color:#5b4b8a;}
+
+.tag-legend{background:#fff;border-bottom:1px solid var(--line-2);font-size:13px;}
+.tag-legend .wrapper{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;padding-top:8px;padding-bottom:8px;color:var(--text-2);}
+.tag-legend b{color:var(--text);}
+
+/* 條列階層（■ → • → ★，符號為文字實體） */
+.lv1{font-weight:700;color:var(--text);margin:16px 0 6px;font-size:15px;}
+ul.lv2{margin:0 0 10px;padding-left:26px;}
+ul.lv2>li{margin-bottom:4px;}
+ul.lv3{list-style:none;padding-left:8px;margin:4px 0 0;}
+ul.lv3>li{margin-bottom:2px;}
+
+/* 行程簡介逐行版（不依賴 pre-line） */
+.day__desc2{font-size:14px;color:var(--text-2);line-height:1.9;}
+.day__desc2>div{margin-bottom:3px;}
+
+/* ===========================================================
+   編輯過程註記（2026-08-20 Zac 裁定）
+   「原文是如何／原文被移動到哪裡」的編輯過程註記不得直接鋪在畫面上，
+   改為點擊「註」徽章後才展開的備註元件（原生 <details class="edit-note">）。
+   規範要求的商品內容補充（免責句、艙等 ※、年齡計算 ※ 等）不適用本元件、維持鋪在畫面。
+   =========================================================== */
+details.edit-note{display:inline-block;vertical-align:baseline;margin:0 2px;}
+details.edit-note[open]{display:block;margin:4px 0;}
+details.edit-note>summary{
+  display:inline-block;list-style:none;cursor:pointer;user-select:none;
+  font-size:11px;line-height:1;font-weight:400;
+  color:var(--text-3);background:var(--bg-mute);
+  border:1px solid var(--line);border-radius:100px;padding:3px 9px;
+}
+details.edit-note>summary::-webkit-details-marker{display:none;}
+details.edit-note>summary::marker{content:"";}
+details.edit-note>summary:hover{color:var(--text-2);background:var(--line-2);}
+details.edit-note>div{
+  margin-top:6px;font-size:13px;line-height:1.7;color:var(--text-3);
+  background:var(--bg-soft);border:1px solid var(--line-2);
+  border-radius:var(--radius);padding:8px 12px;
+}

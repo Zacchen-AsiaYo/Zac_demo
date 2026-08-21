@@ -1,0 +1,11 @@
+# Zac_demo 為 public repo — 只發布 prototype/ 靜態原型，內部規範與工具不上傳
+/*.csv
+/*.md
+!/README.md
+/*.docx
+/GEM_prototype/
+/reasoning_walk_through/
+/.claude/
+
+# 系統檔
+.DS_Store
